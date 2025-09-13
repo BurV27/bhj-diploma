@@ -1,13 +1,16 @@
-/**
- * Класс Account наследуется от Entity.
- * Управляет счетами пользователя.
- * Имеет свойство URL со значением '/account'
- * */
 class Account extends Entity {
-  /**
-   * Получает информацию о счёте
-   * */
+  constructor(URL){
+    super(URL) += "/account";
+  }
   static get(id = '', callback){
-
+    this.URL += id;
+    createRequest({
+      url: this.URL,
+      data,
+      method: "GET",
+      callback: (err, response) => {
+        callback(err, response)
+      }
+    })
   }
 }

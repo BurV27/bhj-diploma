@@ -3,9 +3,9 @@ const createRequest = (options = {}) => {
   if (options.method === "GET") {
     xhr.open("GET", `${options.url}?${new URLSearchParams(options.data)}`);
     xhr.send();
-  } else if (options.method === "POST") {
+  } else if (options.method === "POST" || options.method === "PUT" || options.method === "DELETE" ) {
     const formData = new FormData(options.data);
-    xhr.open("POST", options.url);
+    xhr.open(options.method, options.url);
     xhr.send(formData);
   }
   xhr.responseType = "json";
