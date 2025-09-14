@@ -1,24 +1,17 @@
-/**
- * Класс Sidebar отвечает за работу боковой колонки:
- * кнопки скрытия/показа колонки в мобильной версии сайта
- * и за кнопки меню
- * */
 class Sidebar {
-  /**
-   * Запускает initAuthLinks и initToggleButton
-   * */
   static init() {
     this.initAuthLinks();
     this.initToggleButton();
   }
 
-  /**
-   * Отвечает за скрытие/показа боковой колонки:
-   * переключает два класса для body: sidebar-open и sidebar-collapse
-   * при нажатии на кнопку .sidebar-toggle
-   * */
   static initToggleButton() {
+    const buttonSidebar = document.querySelector(`[data-toggle='push-menu']`);
+    const bodyElement = document.getElementsByTagName('body')[0]
 
+    buttonSidebar.addEventListener('click', () => {
+      bodyElement.classList.toggle('sidebar-open');
+      bodyElement.classList.toggle('sidebar-collapse');
+    })
   }
 
   /**
