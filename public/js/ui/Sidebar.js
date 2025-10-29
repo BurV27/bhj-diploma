@@ -8,7 +8,8 @@ class Sidebar {
     const buttonSidebar = document.querySelector(`[data-toggle='push-menu']`);
     const bodyElement = document.getElementsByTagName('body')[0]
 
-    buttonSidebar.addEventListener('click', () => {
+    buttonSidebar.addEventListener('click', (e) => {
+      e.preventDefault()
       bodyElement.classList.toggle('sidebar-open');
       bodyElement.classList.toggle('sidebar-collapse');
     })
@@ -22,6 +23,29 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+    const buttonLogin = document.getElementsByClassName("menu-item_login")[0];
+    const buttonRegister = document.getElementsByClassName('menu-item_register')[0];
+    const buttonLogout = document.getElementsByClassName('menu-item_logout')[0];
 
+    const modalLogin = App.getModal("login");
+    const modalRegister = App.getModal("register");
+
+    buttonLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalLogin.open()
+      });
+    buttonRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      modalRegister.open()
+    });
+    buttonLogout.addEventListener('click', (e) => {
+      e.preventDefault();
+      User.logout(function(err, response){
+        if (response.success){
+          App.setState('init');
+        }
+      })
+    })
   }
 }
+

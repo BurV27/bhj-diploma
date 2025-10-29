@@ -13,7 +13,7 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-    if(!element) throw new Error('Елемент не найден');
+    if(!element) throw new Error('Элемент не найден');
     this.element = element;
     this.registerEvents();
   }
@@ -42,7 +42,6 @@ class AsyncForm {
   }
 
   onSubmit(options){
-
   }
 
   /**
@@ -50,6 +49,6 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-    this.onSubmit(this.getData)
+    this.onSubmit(this.getData());
   }
 }
